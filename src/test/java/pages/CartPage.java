@@ -11,8 +11,8 @@ public class CartPage extends GeneralStructure{
 	private By shoppingCartButton = By.className("shopping_cart_link");
 	private By checkoutButton = By.className("checkout_button");
 	
-	public CartPage(WebDriver driver) {
-		getDriver();
+	public CartPage(SetupDriver setupDriver) {
+		super(setupDriver);
 	}
 	
 	public void checkout() {

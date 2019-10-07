@@ -15,49 +15,53 @@ import pages.CartPage;
 import pages.GeneralStructure;
 import pages.LoginPage;
 import pages.ProductsPage;
+import pages.SetupDriver;
 
-public class Tests {
-	WebDriver driver;
-	LoginPage loginPage = new LoginPage(driver);
+public class Tests{
+	SetupDriver setupDriver = new SetupDriver();
+	
 	
 	@Before
 	public void setUp() {
-		loginPage.setUpDriver();
+		setupDriver.setUpnav();
 	}
 	
 	@Test @Ignore
 	public void loginOk() {
-		LoginPage loginPage = new LoginPage(driver);
+		
+		LoginPage loginPage = new LoginPage(setupDriver);
+//		LoginPage loginPage = new LoginPage(driver);
 		loginPage.login("standard_user", "secret_sauce");
 		loginPage.assertLoginOk();
 	}
 	
 	@Test @Ignore
 	public void loginLockedUser() {
-		LoginPage loginPage = new LoginPage(driver);
+		LoginPage loginPage = new LoginPage(setupDriver);
 		loginPage.login("locked_out_user", "secret_sauce");
 		loginPage.assertLoginFail("user has been locked out");
 	}
 	
 	@Test @Ignore
 	public void sortProducts() {
-		LoginPage loginPage = new LoginPage(driver);
+		ProductsPage productsPage = new ProductsPage(setupDriver);
+		LoginPage loginPage = new LoginPage(setupDriver);
 		loginPage.login("standard_user", "secret_sauce");
-		ProductsPage productsPage = new ProductsPage(driver);
 		productsPage.sortProducts("hilo");
 	}
 	
 	@Test
 	public void makeAnOrder() {
-		LoginPage loginPage = new LoginPage(driver);
+		CartPage cartPage = new CartPage(setupDriver);
+		LoginPage loginPage = new LoginPage(setupDriver);
 		loginPage.login("standard_user", "secret_sauce");
-		CartPage cartPage = new CartPage(driver);
+		
 		cartPage.checkout();
 	}
 	
 	@After
 	public void tearDown() {
-		loginPage.closeDriver();
+		setupDriver.closeDriver();
 	}
 
 }

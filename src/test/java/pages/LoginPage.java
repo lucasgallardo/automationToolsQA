@@ -8,8 +8,9 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage extends GeneralStructure{
 	
-	public LoginPage(WebDriver driver) {
-		getDriver();
+
+	public LoginPage(SetupDriver setupDriver) {
+		super(setupDriver);
 	}
 
 	private By usernameField = By.id("user-name");

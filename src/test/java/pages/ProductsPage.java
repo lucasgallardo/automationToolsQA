@@ -16,8 +16,8 @@ public class ProductsPage extends GeneralStructure{
 
 	private By selectSort = By.className("product_sort_container");;
 
-	public ProductsPage(WebDriver driver) {
-		super(driver);
+	public ProductsPage(SetupDriver setupDriver) {
+		super(setupDriver);
 	}
 
 	public void sortProducts(String criteria) {
