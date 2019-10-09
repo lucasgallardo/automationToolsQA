@@ -54,9 +54,9 @@ public class Tests{
 	public void makeAnOrder() {
 		CartPage cartPage = new CartPage(setupDriver);
 		LoginPage loginPage = new LoginPage(setupDriver);
-		loginPage.login("standard_user", "secret_sauce");
-		
-		cartPage.checkout();
+		loginPage.login("standard_user", "secret_sauce");		
+		cartPage.addToCart(2);
+		cartPage.checkout();		
 	}
 	
 	@After
