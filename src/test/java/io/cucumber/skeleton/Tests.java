@@ -52,9 +52,9 @@ public class Tests{
 	
 	@Test
 	public void makeAnOrder() {
-		CartPage cartPage = new CartPage(setupDriver);
 		LoginPage loginPage = new LoginPage(setupDriver);
-		loginPage.login("standard_user", "secret_sauce");		
+		loginPage.login("standard_user", "secret_sauce");
+		CartPage cartPage = new CartPage(setupDriver);
 		cartPage.addToCart(2);
 		cartPage.checkout();		
 	}
